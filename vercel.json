@@ -1,13 +1,13 @@
 {
     "builds":[{
-        "src": "Students's-Companion/wsgi.py",
+        "src": "Discussion_Rooms/wsgi.py",
         "use": "@vercel/python",
         "config": {"maxLambdaSize": "15mb" , "runtime": "python3.9"}
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "Students's-Companion/wsgi.py"
+            "dest": "Discussion_Rooms/wsgi.py"
         }
     ]
 }
