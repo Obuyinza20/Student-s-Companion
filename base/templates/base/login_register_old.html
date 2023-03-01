@@ -1,0 +1,42 @@
+{% extends 'main.html' %} 
+
+
+{% block content %} 
+{% if page == 'login' %}
+<div style="text-align: center; background-color: greenyellow;">
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags %}
+        <p class="{{message.tags}}">{{message}}</p>
+        {% endif %}
+        {% endfor %} 
+        {% endif %}
+        <label for="username">Username: </label><input type="text" value="username" placeholder="Enter Username" name="username" />
+        <label for="password">Password: </label><input type="password" value="password" placeholder="Enter password" name="password" />
+        <input type="submit" name="Login" value="Login" />
+    </form>
+    <p>haven't signed up yet?</p>
+    <a href="{% url 'registerpage' %}">Sign Up</a>
+</div>
+{% else %}
+<div style="text-align: center; background-color: greenyellow;">
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags %}
+        <p class="{{message.tags}}">{{message}}</p>
+        {% endif %}
+        {% endfor %} 
+        {% endif %}
+        {{form.as_p}}
+        
+        <input type="submit" name="Register" value="Register" />
+    </form>
+    <p>Already signed up?</p>
+    <a href="{% url 'loginpage' %}">Login</a>
+</div>
+{% endif %}
+{% endblock content %}
